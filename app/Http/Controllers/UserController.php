@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
+use App\Eleve;
+use App\Professeur;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\photo;
 use Illuminate\Support\Facades\Session;
@@ -27,7 +29,6 @@ class UserController extends Controller
         'matricule' => $data['matricule'],
         'classe' => $data['classe'],
         'role' => $data['role'],
-       
         'email' => $data['email'],
         'password' => Hash::make($data['password']),
         'statut' => 0,
@@ -47,10 +48,88 @@ class UserController extends Controller
     }
 
 
-    // public function rejet_inscrit($id)
-    // {
-    //     User::where('id', $id)->update(['statut' => 2]);
-    //     return redirect()->back();
+     public function professeur(){
+        $users=User::where('status',2)->get();
+        return view('Listes.liste_prof',compact('users') 
+    );
+
+    }
+        public function store(Request $request)
+    {
+       $data=request()->validate([
+            'name'=> ['required','string'],
+            'prenoms'=> ['required','string'],
+            'sexe'=> ['required','string'],
+            'matricule'=> ['required','string'],
+            'matiere'=> ['required','string'],
+            'annee'=> ['required','string'],
+            'classe'=> ['required','string'],
+            'status'=> ['required','string'],
+            'email'=> ['required','string'],
+            'password'=> ['required','string'],
+          ]);
+
+            User::create([
+            'name'=>$request->name,
+            'prenoms'=>$request->prenoms,
+            'sexe'=>$request->sexe,
+            'matricule'=>$request->matricule,
+            'matiere'=>$request->matiere,
+            'annee'=>$request->annee,
+            'classe'=>$request->classe,
+            'status'=>$request->status,
+            'email'=>$request->email,
+            'password' => Hash::make($data['password']),
+            ]);
+             return redirect()->route('list.prof');
+    }
+
+     public function index(){
+
+        $users=User::all();
+
+        return view('Espace_prof', compact('users'));
+    }
+
+     public function eleve(){
+        $users=User::where('status',3)->get();
+        return view('Listes.liste_eleve', compact('users'));
+    }
+       public function eleve_store(Request $request)
+    {
+           $data=request()->validate([
+            'name'=> ['required','string'],
+            'prenoms'=> ['required','string'],
+            'sexe'=> ['required','string'],
+            'matricule'=> ['required','string'],
+            'naissance'=> ['required','string'],
+            'annee'=> ['required','string'],
+            'classe'=> ['required','string'],
+            'status'=> ['required','string'],
+            'email'=> ['required','string'],
+            'password'=> ['required','string'],
+          ]);
+
+            User::create([
+            'name'=>$request->name,
+            'prenoms'=>$request->prenoms,
+            'sexe'=>$request->sexe,
+            'matricule'=>$request->matricule,
+            'naissance'=>$request->naissance,
+            'annee'=>$request->annee,
+            'classe'=>$request->classe,
+            'status'=>$request->status,
+            'email'=>$request->email,
+            'password' => Hash::make($data['password']),
+            ]);
+            return redirect()->route('list.eleve');
+    }
+
+    //  public function index(){
+
+    //     $users=User::all();
+
+    //     return view('include.Espace_prof', compact('users'));
     // }
 
 

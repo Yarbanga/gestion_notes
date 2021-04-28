@@ -9,5 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Authentification extends Model
 {
-     //
+     protected $fillable = [
+        'trimestre',
+    ];
 }

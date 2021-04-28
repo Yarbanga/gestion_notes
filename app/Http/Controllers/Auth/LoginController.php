@@ -42,25 +42,33 @@ class LoginController extends Controller
     }
     protected function redirectTo()
     {
-         if(Auth::user()->statut!=1){
-            $this->guard()->logout();
-            Session::flash('message', 'Ce compte est non activé !'); 
-            Session::flash('alert-class', 'alert-danger text-center'); 
-            return '/bashbord';
         
+
+        if(Auth::user()->status==1){
+            Session::flash('message', 'Bienvenue admin'); 
+            Session::flash('alert-class', 'alert-primary text-center'); 
+            return '/dashbord';
         }
         
-        if(Auth::user()->statut!=2){
-            Session::flash('message', 'Bienvenue '); 
+        if(Auth::user()->status==2){
+            Session::flash('message', 'Bienvenue admin'); 
             Session::flash('alert-class', 'alert-primary text-center'); 
             return '/Espace_prof';
         }
 
+        
+        
+        if(Auth::user()->status==3){
+            Session::flash('message', 'Bienvenue Eleves'); 
+            Session::flash('alert-class', 'alert-primary text-center'); 
+            return '/Espace_apprn';
+        }
         else{
              
-            Session::flash('message', 'Bienvenue dans votre espace!'); 
+            Session::flash('message', 'Bienvenue dans ton espace membre!'); 
             Session::flash('alert-class', 'alert-danger text-center'); 
-            return '/Espace_eleve';
+            return '/espace';
         }
+
     } 
 }

@@ -57,46 +57,92 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <form action="">
-                        <form action="" method="post">
-                            @csrf
-                            @method('PUT')
-                            <div class="input-group">
-                              <div class="input-group-prepend">
+                      <form action="{{route('profstore')}}" method="POST">
+                          @csrf
+                          <div class="input-group">
+                            <div class="input-group-prepend">
                               
-                              </div>
-                             <div>
-                                <input type="text" class="form-control" name="name" placeholder="Nom"><br>
-                              <input type="text" class="form-control" name="sexe" placeholder="Sexe"><br>
-                              <input type="text" class="form-control" name="matière" placeholder="Matière"><br>
-                             </div>
+                            </div>
+                          <div>
+                            <input type="text" class="form-control" name="name" placeholder="Nom"><br>
+                             <select value="classe" class="option form-control" name="sexe">
+                                  <option disabled="disableb" selected="selected"></option>
+                                  <option value="classe" selected>Sexe</option >
+                                  <option>Masculin</option>
+                                  <option>Feminin</option>             
+                                </select> <br> 
+                            <select value="classe" class="option form-control" name="matiere" placeholder="Classe">
+                                  <option disabled="disableb" selected="selected"></option>
+                                  <option value="classe" selected>Matières</option >
+                                  <option>mathematique</option>
+                                  <option>physique-chimie</option >
+                                  <option>histoire</option>
+                                  <option>geographie</option >
+                                  <option>eps</option>      
+                                  <option>svt</option>
+                                  <option>anglais</option>
+                                  <option>francais</option>
+                                  <option>philo</option>      
+                                  <option>allemand</option>
+                                  <option>couture</option>              
+                                </select> <br> 
+                            <input type="email" class="form-control" name="email" placeholder="Address Mail" style="width: 225%"><br>
+                          </div>
 
-                             <div class="ml-5">
-                              <input type="text" class="form-control" name="prenoms" placeholder="Prénoms"><br>
-                              <input type="text" class="form-control" name="classe" placeholder="Classe"><br>
-                              <input type="text" class="form-control" name="matricule" placeholder="Matricule"><br>
-                             </div>
+                          <div class="ml-5">
+                            <input type="text" class="form-control" name="prenoms" placeholder="Prénoms"><br>
+                            <select value="classe" class="option form-control" name="classe" placeholder="Classe">
+                                  <option disabled="disableb" selected="selected"></option>
+                                  <option value="classe" selected>Classes</option >
+                                  <option>6ème</option>
+                                  <option>5ème</option>
+                                  <option>4ème</option >
+                                  <option>3ème</option>
+                                  <option>2nd</option >
+                                  <option>1ère</option>      
+                                  <option>TLA</option>
+                                  <option>TLD</option>
+                                  <option>TLC</option>              
+                                </select> <br> 
+                            <input type="text" class="form-control" name="matricule" placeholder="Matricule"><br>
 
-                             <div>
-                                <input type="année" class="form-control" name="annee" placeholder="Année scolaire"><br>
-                              <input type="password" class="form-control" name="password" placeholder="Mot de passe"><br>
+                          </div>
+
+                          <div>
+                            <select value="classe" class="option form-control" name="annee">
+                                  <option disabled="disableb" selected="selected"></option>
+                                  <option value="classe" selected>Année</option >
+                                  <option>2021-2022</option>
+                                  <option>2022-2023</option>  
+                                  <option>2024-2025</option>
+                                  <option>2026-2027</option> 
+                                  <option>2028-2029</option>
+                                  <option>2030-2031</option>  
+                                  <option>2032-2033</option>
+                                  <option>2034-2035</option>             
+                                </select> <br> 
+                            <input type="password" class="form-control" name="password" placeholder="Mot de passe"><br>
                               
-                             </div>
+                          </div>
 
-                             <div class="ml-5">
-                              <input type="text" class="form-control" name="status" placeholder="Status"><br>
-                              <input type="password" class="form-control" name="password" placeholder="Confirmer mot de passe"><br>
-                              
-                             </div>
-                             
-                            </div>
-                              <br>   <input type="hidden" class="form-control" name="prenoms" placeholder="">
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
-                              <button type="button" class="btn btn-primary">Confirmer</button>
-                            </div>
-                          </form>
+                          <div class="ml-5">
+                            <select value="classe" class="option form-control" name="status">
+                              <option disabled="disableb" selected="selected"></option>
+                              <option value="Statut" selected>statut</option >
+                              <option value="3">Elève</option>
+                              <option value="2">Professeur principal</option>  
+                              <option></option>          
+                            </select> <br> 
+                            <input type="password" class="form-control" name="password" placeholder="Confirmer mot de passe"><br>  
+                          </div> 
+                          </div>
+                            <br><input type="hidden" class="form-control">
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
+                            <button type="submit" class="btn btn-primary">Confirmer</button>
+                          </div>
+                        </form>
                       
                     </div>
                     
@@ -120,12 +166,73 @@
                    <a href="{{route('list.eleve')}}"><i class="bx bx-file-blank"></i> 
                     <span>Liste élèves</span></a>
                 </li>
+                <li>
+                  <a type="button" data-toggle="modal" data-target="#infos" class="text-white">
+                    <i class="icofont-tag"></i> 
+                    Choix matière
+                  </a>
+                    <div class="modal" id="infos">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Choix de matière</h4>
+                              <button type="button" class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                              </button>            
+                            </div>
+                            <div class="modal-body">
+                              <form action="{{route('choix_store')}}" method="post">
+                                @csrf
+                                <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">Choisir la classe
+                              </div>
+                                <select class="option form-control" name="classe" placeholder="">
+                                  <option disabled="disableb" selected="selected"></option>
+                                  <option>6ème</option >
+                                  <option>5ème</option>
+                                  <option>4ème</option >
+                                  <option>3ème</option>
+                                  <option>2nd</option >
+                                  <option>1ère</option>      
+                                  <option>TLA</option>
+                                  <option>TLD</option>
+                                  <option>TLC</option>              
+                                </select> <br> 
+                              </div>
+                              <div class="input-group mt-2">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">Choisir une matière</span>
+                              </div>
+                                <select class="option form-control" name="matiere" placeholder="Confirmer">
+                                  <option disabled="disableb" selected="selected"></option>
+                                  <option>Mathematique</option >
+                                  <option>Physique Chimie</option>
+                                  <option>Français</option >
+                                  <option>Anglais</option>
+                                  <option>Histoire</option >
+                                  <option>Geographie</option>      
+                                  <option>EPS</option>
+                                  <option>Philosophie</option>
+                                  <option>SVT</option>              
+                                </select>
+                              
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
+                              <button type="submit" class="btn btn-primary">Confirmer</button>
+                            </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </span></a>
+                </li>
                 <li>       
                   <a class="text-white" data-toggle="modal" data-target="#exampleModal">
                     <i class="bx bx-user"></i>
                     Ajouter un élèves
                   </a>
-                  <!-- Modal -->
                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
@@ -136,43 +243,76 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          <form action="">
-                            @csrf
-                            @method('PUT')
+                          <form action="{{route('eleve_store')}}" method="POST">
+                            @csrf                  
                             <div class="input-group">
-                              <div class="input-group-prepend">
-                              
+                              <div class="input-group-prepend">                        
                               </div>
                              <div>
-                                <input type="text" class="form-control" name="name" placeholder="Nom"><br>
-                              <input type="text" class="form-control" name="sexe" placeholder="Sexe"><br>
-                              <input type="date" class="form-control" name="naissance" placeholder="Date de naissance"><br>
+                              <input type="text" class="form-control" name="name" placeholder="Nom"><br>
+                              <select value="classe" class="option form-control" name="sexe">
+                                  <option disabled="disableb" selected="selected"></option>
+                                  <option value="classe" selected>Sexe</option >
+                                  <option>Masculin</option>
+                                  <option>Feminin</option>             
+                                </select> <br> 
+                              <input type="date" class="form-control" name="naissance" placeholder="Date_de_naissance"><br>
+                              <input type="email" class="form-control" name="email" placeholder="Address Mail" style="width: 225%"><br>
                              </div>
 
                              <div class="ml-5">
                               <input type="text" class="form-control" name="prenoms" placeholder="Prénoms"><br>
-                              <input type="text" class="form-control" name="classe" placeholder="Classe"><br>
+                              <select class="option form-control" name="classe">
+                                  <option disabled="disableb" selected="selected">Classes</option>
+                                  <option>6ème</option >
+                                  <option>5ème</option>
+                                  <option>4ème</option >
+                                  <option>3ème</option>
+                                  <option>2nd</option >
+                                  <option>1ère</option>      
+                                  <option>TLA</option>
+                                  <option>TLD</option>
+                                  <option>TLC</option>              
+                                </select> <br> 
                               <input type="text" class="form-control" name="matricule" placeholder="Matricule"><br>
                              </div>
 
                              <div>
-                                <input type="année" class="form-control" name="annee" placeholder="Année scolaire"><br>
+                                <select value="classe" class="option form-control" name="annee">
+                                  <option disabled="disableb" selected="selected"></option>
+                                  <option value="classe" selected>Année</option >
+                                  <option>2021-2022</option>
+                                  <option>2022-2023</option>  
+                                  <option>2024-2025</option>
+                                  <option>2026-2027</option> 
+                                  <option>2028-2029</option>
+                                  <option>2030-2031</option>  
+                                  <option>2032-2033</option>
+                                  <option>2034-2035</option>             
+                                </select> <br> 
                               <input type="password" class="form-control" name="password" placeholder="Mot de passe"><br>
                               
                              </div>
 
                              <div class="ml-5">
-                              <input type="text" class="form-control" name="status" placeholder="Status"><br>
+                               <select value="classe" class="option form-control" name="status">
+                                  <option disabled="disableb" selected="selected"></option>
+                                  <option value="Statut" selected>statut</option >
+                                  <option value="3">Elève</option>
+                                  <option value="2">Professeur principal</option>  
+                                  <option>Professeur</option>
+                                              
+                                </select> <br> 
                               <input type="password" class="form-control" name="password" placeholder="Confirmer mot de passe"><br>
                               
                              </div>
                              
                             </div>
-                              <br>   <input type="hidden" class="form-control" name="prenoms" placeholder="">
+                              <br>
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
-                              <button type="button" class="btn btn-primary">Confirmer</button>
+                              <button type="submit" class="btn btn-primary">Confirmer</button>
                             </div>
                           </form>
                       </div>
@@ -195,19 +335,22 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                          <form action="">
+                          <form action="{{route('choix_store')}}" method="POST">
+                            @csrf
                             <div class="input-group">
                               <div class="input-group-prepend">
                                 <span class="input-group-text">Faite un choix</span>
                               </div>
-                              <input type="text" class="form-control" name="trimestre" placeholder="trimestre">
-                              <input type="text" class="form-control" name="trimestre" placeholder="trimestre">
+                            <select class="option form-control" name="trimestre">
+                              <option disabled="disableb" selected="selected">Choisir l'année scolairek</option>
+                              <option>Trimestre</option >
+                              <option>Semestre</option>                       
+                            </select>
                             </div>
-                                              
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
-                              <button type="button" class="btn btn-primary">Confirmer</button>
+                              <button type="submit" class="btn btn-primary">Confirmer</button>
                             </div>
                           </form>
                         </div>

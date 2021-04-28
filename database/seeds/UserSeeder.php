@@ -21,12 +21,17 @@ class UserSeeder extends Seeder
             'name'=>'admin', 
             'prenoms'=>'gerant', 
             'matricule'=>'145769E',
-            'classe'=>'tous',    
+            'classe'=>'classe',    
             'email'=>'admin@admin.com',
             'photo'=>'LOCDE-analyse-effets-Covid-19-leducation-2020-09-08-1201112897',
+            'sexe'=>'sexe',
             'password'=> Hash::make('password'),
             'role'=>1,
             'status'=>true,
+            'matiere'=>'matiere',
+            'naissance'=>'naissance',
+            'annee'=>'annee',
+
         ]);   
 
 
@@ -38,8 +43,12 @@ class UserSeeder extends Seeder
             'email'=>'professeur@gmail.com',
             'photo'=>'LOCDE-analyse-effets-Covid-19-leducation-2020-09-08-1201112897',
             'password'=> Hash::make('password'),
+            'matiere'=>'matiere',
+            'sexe'=>'sexe',
+            'naissance'=>'naissance',
             'role'=>2,
             'status'=>2,
+            'annee'=>'annee',
 
         ]);
 
@@ -50,19 +59,14 @@ class UserSeeder extends Seeder
             'classe'=>'A determiner',    
             'email'=>'eleve@gmail.com',
             'photo'=>'LOCDE-analyse-effets-Covid-19-leducation-2020-09-08-1201112897',
+            'matiere'=>'matiere',
             'password'=> Hash::make('password'),
             'role'=>3,
             'status'=>3,
+            'naissance'=>'naissance',
+            'sexe'=>'sexe',
+            'annee'=>'annee',
 
-        ]);  
-
-            $adminRole=User::where('name','admin')->first(); 
-            $professeurRole=User::where('name','professeur')->first();    
-            $eleveRole=User::where('name','eleve')->first(); 
-
-
-            $admin->users()->attach($adminRole);
-            $professeur->Users()->attach($professeurRole);
-            $eleve->users()->attach($eleveRole);       
+        ]);            
     }
 }

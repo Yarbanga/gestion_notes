@@ -15,6 +15,7 @@ class CreateAuthentificationsTable extends Migration
     {
         Schema::create('authentifications', function (Blueprint $table) {
            $table->id();
+            $table->string('trimestre');
            $table->timestamps();
         });
     }

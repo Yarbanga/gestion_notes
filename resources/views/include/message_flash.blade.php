@@ -10,10 +10,10 @@
                 @endif
                 <div class="card-body">
                     <p>
-                        Bonjour! votre inscription a été effectuée avec succès. 
+                        Bonjour! Vous venez d'ajouter avec succès un nous utilisateur. 
                     </p>
                      <p>
-                         Vous pouvez maintenant vous connectez en mettant tout vous information correcte du professeur
+                         Vous pouvez maintenant lui faire parvenir sont password afin qu'il puisse se connetter.
                      </p>
                      <p>
                        Simplon, vous remercie pour la confiance!
